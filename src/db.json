@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "title": "Video 1",
+    "video": "https://www.youtube.com/watch?v=AG2QssLpQzI",
+    "description": "Descripción del video 1"
+  },
+  {
+    "id": 2,
+    "title": "Video 2",
+    "video": "https://www.youtube.com/watch?v=AULPtYo25Lw"
+  },
+  {
+    "id": 3,
+    "title": "video",
+    "video": "https://www.youtube.com/watch?v=QjOWz9avkg8"
+  },
+  {
+    "id": 4,
+    "title": "video",
+    "video": "https://youtu.be/GJfOSoaXk4s?si=rRlv6Xfzm3ma5-X_",
+    "description": "¿Que es Javascript"
+  }
+]
