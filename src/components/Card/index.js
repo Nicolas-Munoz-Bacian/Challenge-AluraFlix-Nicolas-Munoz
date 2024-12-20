@@ -21,19 +21,33 @@ function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear 
     };
 
     const handleRedirect = () => {
-        window.open(video, "_blank"); // Redirigir a YouTube
+        if (video) {
+            const formattedVideoUrl = formatYouTubeURL(video);
+            window.open(formattedVideoUrl, "_blank"); // Redirigir a YouTube
+        } else {
+            console.error('No hay URL de video para redirigir');
+        }
+    };
+
+    const formatYouTubeURL = (url) => {
+        // Asegúrate de que las URLs de YouTube sean válidas
+        if (url.startsWith('http')) {
+            return url; // Ya está bien formada
+        } else {
+            // Formación estándar para URLs de YouTube
+            return `https://www.youtube.com/watch?v=${url.split('watch?v=')[1]}`;
+        }
     };
 
     return (
         <div className={styles.container}>
-                  <Link className={styles.link} to={`/${id}`}>
-            <img 
-                src={capa} 
-                alt={titulo} 
-                className={styles.capa} 
-                onClick={handleRedirect} // Redirigir al hacer clic en la imagen
-            />
-            <h2>{titulo}</h2>
+            <Link className={styles.link} to={`/${id}`} onClick={handleRedirect}>
+                <img 
+                    src={capa} 
+                    alt={titulo} 
+                    className={styles.capa} 
+                />
+                <h2>{titulo}</h2>
             </Link>
             <img 
                 src={icon} 
@@ -63,6 +77,5 @@ function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear 
         </div>
     );
 }
-
 
 export default Card;
