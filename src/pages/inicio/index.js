@@ -10,8 +10,9 @@ import videosData from "../../components/data/db.json"
 import { useState, useEffect } from "react";
 import EditModal from "../../pages/ModalEditarCard/modal";
 
+
 function Inicio() {
-  const [videos, setVideos] = useState([]);
+  const [videos, setVideos] = useState(videosData.videos); // Carga los videos desde db.json
   const [showModal, setShowModal] = useState(false);
   const [videoToEdit, setVideoToEdit] = useState(null);
 
@@ -30,21 +31,20 @@ function Inicio() {
 
   const handleSave = (updatedVideo) => {
     const updatedVideos = videos.map((video) => (video.id === updatedVideo.id ? updatedVideo : video));
-    setVideos(updatedVideos);
+    setVideos(updatedVideos); // Actualiza la lista de videos
     setShowModal(false);
     setVideoToEdit(null);
   };
 
   const handleDelete = (videoId) => {
-    const updatedVideos = videos.filter((video) => video.id !== videoId);
-    setVideos(updatedVideos);
+    const updatedVideos = videos.filter((video) => video.id !== videoId); // Borra el video seleccionado
+    setVideos(updatedVideos); // Actualiza la lista de videos
   };
 
   const handleClear = () => {
     setVideoToEdit(null);
     setShowModal(false);
   };
-
 
   // Datos estáticos de videos
   const staticVideos = videosData.videos;
@@ -62,8 +62,8 @@ function Inicio() {
           <Card
             {...video}
             key={video.id}
-            onEdit={() => handleEdit(video)}
-            onDelete={() => handleDelete(video.id)}
+            onEdit={() => handleEdit(video)} // Editar el video
+            onDelete={() => handleDelete(video.id)} // Eliminar solo el video seleccionado
             onSave={handleSave}
             onClear={handleClear}
           />
@@ -79,8 +79,8 @@ function Inicio() {
           <Card
             {...video}
             key={video.id}
-            onEdit={() => handleEdit(video)}
-            onDelete={() => handleDelete(video.id)}
+            onEdit={() => handleEdit(video)} // Editar el video
+            onDelete={() => handleDelete(video.id)} // Eliminar solo el video seleccionado
             onSave={handleSave}
             onClear={handleClear}
           />
@@ -96,8 +96,8 @@ function Inicio() {
           <Card
             {...video}
             key={video.id}
-            onEdit={() => handleEdit(video)}
-            onDelete={() => handleDelete(video.id)}
+            onEdit={() => handleEdit(video)} // Editar el video
+            onDelete={() => handleDelete(video.id)} // Eliminar solo el video seleccionado
             onSave={handleSave}
             onClear={handleClear}
           />
@@ -112,7 +112,6 @@ function Inicio() {
           onSave={handleSave}
         />
       )}
-
     </>
   );
 }
