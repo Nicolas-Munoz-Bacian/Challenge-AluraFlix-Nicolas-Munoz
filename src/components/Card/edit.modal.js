@@ -47,7 +47,7 @@ function EditModal({ initialData, onClose, onSave, onDelete }) {
     return (
         <div className={styles.modal}>
             <div className={styles.modalContent}>
-                <h2>{initialData ? 'Editar Card' : 'Crear Nuevo Video'}</h2>
+                <h2>{initialData ? 'Nuevo Video' : 'Crear Nuevo Video'}</h2>
                 <div>
                     <label>Título:</label>
                     <input

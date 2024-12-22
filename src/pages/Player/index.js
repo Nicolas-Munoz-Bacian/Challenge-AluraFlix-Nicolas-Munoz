@@ -11,17 +11,23 @@ function Player() {
     const parametros = useParams();
 
     useEffect(() => {
-        // Encuentra el video utilizand el parámetro 'id'
-        const videoEncontrado = videos.find(video => video.id === Number(parametros.id));
+        // Encuentra el video utilizando el parámetro 'id'
+        const videoEncontrado = videos.videos.find(video => video.id === Number(parametros.id));
         if (videoEncontrado) {
-            const videoURL = convertToEmbedURL(videoEncontrado.video);
-            setVideo({ ...videoEncontrado, video: videoURL });
+            const videoURL = convertToEmbedURL(videoEncontrado.link); // Usar 'link' para obtener la URL embebida
+            setVideo({ ...videoEncontrado, video: videoURL }); // Agregar video embebido al estado
         }
     }, [parametros.id]);
 
     const convertToEmbedURL = (url) => {
-        // Transforma URLs estandard y acortadas de YouTube para ser embebidas
-        if (url.includes('youtu.be')) {
+        // Asegúrate de que url es de tipo string
+        if (typeof url !== 'string') {
+            console.error('La URL debe ser una cadena de texto');
+            return '';
+        }
+        
+        // Transformar URLs estándar y acortadas de YouTube para ser embebidas
+        if (url.includes('youtu.be/')) {
             return url.replace('youtu.be/', 'www.youtube.com/embed/');
         }
         if (url.includes('watch?v=')) {
@@ -31,20 +37,20 @@ function Player() {
         return url; // Retorna la URL sin cambios si no son de YouTube
     };
 
-    if (!video) return <NotFound />;
+    if (!video) return <NotFound />; // Si no se encontró el video, muestra NotFound
     
     return (
         <>
             <Banner img="player" color="#58B9AE" />
             <Titulo>
-                <h1>Player</h1>
+                <h1>{video.titulo}</h1> {/* Muestra el título del video */}
             </Titulo>
             <section className={styles.container}>
                 <iframe 
                     width="100%" 
                     height="80vh" 
-                    src={video.video} 
-                    title={video.title} 
+                    src={video.video} // Usa el campo de video embebido
+                    title={video.titulo} 
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowFullScreen

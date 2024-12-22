@@ -1,25 +1,46 @@
-[
-  {
-    "id": 1,
-    "title": "Video 1",
-    "video": "https://www.youtube.com/watch?v=AG2QssLpQzI",
-    "description": "Descripción del video 1"
-  },
-  {
-    "id": 2,
-    "title": "Video 2",
-    "video": "https://www.youtube.com/watch?v=AULPtYo25Lw"
-  },
-  {
-    "id": 3,
-    "title": "Video 3",
-    "video": "https://www.youtube.com/watch?v=rpvrLaBQwgg&t=12s",
-    "description":"Equipo Front-End"
-  },
-  {
-    "id": 4,
-    "title": "Video 4",
-    "video": "https://youtu.be/GJfOSoaXk4s",
-    "description": "¿Qué es Javascript?"
-  }
-]
+{
+  "videos": [
+    {
+      "id": 1,
+      "titulo": "Como utilizar el Display block, inline, inline-block",
+      "imagen": "https://caelum-online-public.s3.amazonaws.com/ESP-2052+-++React%3A+practicando+React+con+Js/282x425+-+Jean.png",
+      "link": "https://www.youtube.com/embed/AG2QssLpQzI",
+      "descripcion": "Front-End"
+    },
+    {
+      "id": 2,
+      "titulo": "Front-end vs. Back-end: ¡Descubre el lado perfecto para ti!",
+      "imagen": "https://i.ytimg.com/vi/QjOWz9avkg8/maxresdefault.jpg",
+      "link": "https://www.youtube.com/embed/QjOWz9avkg8",
+      "descripcion": "Front-End"
+    },
+    {
+      "id": 3,
+      "titulo": "Simplificando el Back End",
+      "imagen": "https://i.ytimg.com/vi/XuSXJ9DUcvY/maxresdefault.jpg",
+      "link": "https://www.youtube.com/embed/XuSXJ9DUcvY",
+      "descripcion": "Back-End"
+    },
+    {
+      "id": 4,
+      "titulo": "Cuáles son las principales áreas de la programación?",
+      "imagen": "https://caelum-online-public.s3.amazonaws.com/ESP-2052+-++React%3A+practicando+React+con+Js/282x425+-+Genesis.png",
+      "link": "https://www.youtube.com/embed/03cxUlwLVt4",
+      "descripcion": "Back-End"
+    },
+    {
+      "id": 5,
+      "titulo": "Productividad en el trabajo remoto",
+      "imagen": "https://caelum-online-public.s3.amazonaws.com/ESP-2052+-++React%3A+practicando+React+con+Js/282x425+-+Gabi.png",
+      "link": "https://www.youtube.com/embed/AULPtYo25Lw",
+      "descripcion": "Innovación y Gestión"
+    },
+    {
+      "id": 6,
+      "titulo": "Cómo evitar robo de vehiculo con inteligencia artificial",
+      "imagen": "https://caelum-online-public.s3.amazonaws.com/ESP-2052+-++React%3A+practicando+React+con+Js/282x425+-+Ale.png",
+      "link": "https://www.youtube.com/embed/5T_Q_NtNLZE",
+      "descripcion": "Innovación y Gestión"
+    }
+  ]
+}

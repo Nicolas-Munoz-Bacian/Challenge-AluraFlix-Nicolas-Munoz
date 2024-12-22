@@ -11,7 +11,7 @@ function Favoritos() {
     <>
       <Banner img="favorite" color="#44d97d" />
       <Titulo>
-        <h1>Mis favoritos</h1>
+        <h1></h1>
       </Titulo>
       <section className={styles.container}>
         {favorito.map((fav) => (
