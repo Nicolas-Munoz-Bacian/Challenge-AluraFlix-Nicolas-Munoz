@@ -7,7 +7,7 @@ import EditModal from "../../pages/ModalEditarCard/modal";
 import { Link } from 'react-router-dom';
 
 function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear, imagen }) {
-    const { favorito, agregarFavorito } = useFavoritosContext();
+    const { favorito, agregarFavorito, quitarFavorito } = useFavoritosContext();
     const [showModal, setShowModal] = useState(false);
     const isFavorito = favorito.some(fav => fav.id === id);
     const icon = isFavorito ? iconFavorito : iconNoFavorito;
@@ -54,7 +54,13 @@ function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear,
                 src={icon} 
                 alt="Icono favorito"
                 className={styles.favorito}
-                onClick={() => agregarFavorito({ id, titulo, capa, imagen })}
+                onClick={() => {
+                    if (isFavorito) {
+                        quitarFavorito(id); // Llama a quitarFavorito
+                    } else {
+                        agregarFavorito({ id, titulo, imagen, video }); // Agrega a favoritos
+                    }
+                }}
             />
             <button onClick={handleEdit} className={styles.button}>
                 Editar
