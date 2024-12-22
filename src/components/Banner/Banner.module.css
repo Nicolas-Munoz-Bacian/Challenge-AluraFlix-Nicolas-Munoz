@@ -11,3 +11,22 @@
     opacity: .5;
     background-color: black;
 }
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .capa {
+        height: 30vh; /* Ajustar altura para pantallas más pequeñas */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 990px) {
+    .capa {
+        height: 35vh; /* Ajustar altura para tabletas */
+    }
+}
+
+@media (min-width: 991px) {
+    .capa {
+        height: 40vh; /* Mantener altura para pantallas más grandes */
+    }
+}
