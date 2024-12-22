@@ -27,6 +27,6 @@
 
 @media (min-width: 991px) {
     .capa {
-        height: 40vh; /* Mantener altura para pantallas más grandes */
+        height: 70vh; /* Mantener altura para pantallas más grandes */
     }
 }

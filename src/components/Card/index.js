@@ -7,7 +7,7 @@ import EditModal from "../../pages/ModalEditarCard/modal";
 import { Link } from 'react-router-dom';
 
 function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear, imagen }) {
-    const { favorito, agregarFavorito, quitarFavorito } = useFavoritosContext();
+    const { favorito, agregarFavorito, quitarFavorito } = useFavoritosContext(); // Añadimos quitarFavorito
     const [showModal, setShowModal] = useState(false);
     const isFavorito = favorito.some(fav => fav.id === id);
     const icon = isFavorito ? iconFavorito : iconNoFavorito;
@@ -42,25 +42,19 @@ function Card({ id, capa, titulo, descripcion, video, onDelete, onSave, onClear,
     return (
         <div className={styles.container}>
             <Link className={styles.link} to={`/${id}`} onClick={handleRedirect}>
-            <img 
-                src={imagen} // Utilizar el campo imagen para mostrar la miniatura
-                alt={titulo} 
-                className={styles.imagen} 
-                onClick={handleRedirect} // Permitir abrir el video al hacer clic en la imagen
-            />
+                <img 
+                    src={capa} 
+                    alt={titulo} 
+                    className={styles.imagen}
+                    onClick={handleRedirect} 
+                />
                 <h2>{titulo}</h2>
             </Link>
             <img 
                 src={icon} 
                 alt="Icono favorito"
                 className={styles.favorito}
-                onClick={() => {
-                    if (isFavorito) {
-                        quitarFavorito(id); // Llama a quitarFavorito
-                    } else {
-                        agregarFavorito({ id, titulo, imagen, video }); // Agrega a favoritos
-                    }
-                }}
+                onClick={() => agregarFavorito({ id, titulo, capa })}
             />
             <button onClick={handleEdit} className={styles.button}>
                 Editar
