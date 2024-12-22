@@ -1,7 +1,7 @@
 .container {
     padding: 0 0 1em 0;
     margin-top: .2em;
-    width: 282px;
+    width: 600px;
     background-color: var(--gris);
     background-repeat: no-repeat;
     border-width: 4px; /* Ancho del borde */
