@@ -6,7 +6,7 @@ import home from "../../pages/inicio/home.jpg";
 import frontend from "../../pages/inicio/front end.png";
 import backend from "../../pages/inicio/back end.png";
 import innovacionYgestion from "../inicio/innovación y gestión.png";
-import videos from "../../components/data/db.json"
+import videosData from "../../components/data/db.json"
 import { useState, useEffect } from "react";
 import EditModal from "../../pages/ModalEditarCard/modal";
 
@@ -45,6 +45,10 @@ function Inicio() {
     setShowModal(false);
   };
 
+
+  // Datos estáticos de videos
+  const staticVideos = videosData.videos;
+
   return (
     <>
       <Banner src={home} img="home" color="#154580" />
@@ -53,33 +57,33 @@ function Inicio() {
       <Titulo>
         <img src={frontend} className="banner" alt="banner front end" />
       </Titulo>
-
       <section className={styles.container}>
-        {videos.map((video) => (
-        <Card
-        {...video}
-        key={video.id}
-        onEdit={() => handleEdit(video)}
-        onDelete={() => handleDelete(video.id)}
-        onSave={handleSave}
-        onClear={handleClear} // Pasa la función handleClear como prop
-      />
-    ))}
+        {staticVideos.filter(video => video.descripcion === "Front-End").map(video => (
+          <Card
+            {...video}
+            key={video.id}
+            onEdit={() => handleEdit(video)}
+            onDelete={() => handleDelete(video.id)}
+            onSave={handleSave}
+            onClear={handleClear}
+          />
+        ))}
       </section>
 
       {/* Sección Back End */}
       <Titulo>
         <img src={backend} className="banner" alt="banner back end" />
       </Titulo>
-
       <section className={styles.container}>
-        {videos.map((video) => (
-        <Card
-        {...video}
-        key={video.id}
-        onEdit={() => handleEdit(video)}
-        onDelete={() => handleDelete(video.id)} // Pasa la función handleDelete como prop
-      />
+        {staticVideos.filter(video => video.descripcion === "Back-End").map(video => (
+          <Card
+            {...video}
+            key={video.id}
+            onEdit={() => handleEdit(video)}
+            onDelete={() => handleDelete(video.id)}
+            onSave={handleSave}
+            onClear={handleClear}
+          />
         ))}
       </section>
 
@@ -88,17 +92,26 @@ function Inicio() {
         <img src={innovacionYgestion} className="banner" alt="banner innovación y gestion" />
       </Titulo>
       <section className={styles.container}>
-        {videos.map((video) => (
-        <Card
-        {...video}
-        key={video.id}
-        onEdit={() => handleEdit(video)}
-        onDelete={() => handleDelete(video.id)} // Pasa la función handleDelete como prop
-      />
+        {staticVideos.filter(video => video.descripcion === "Innovación y Gestión").map(video => (
+          <Card
+            {...video}
+            key={video.id}
+            onEdit={() => handleEdit(video)}
+            onDelete={() => handleDelete(video.id)}
+            onSave={handleSave}
+            onClear={handleClear}
+          />
         ))}
       </section>
-      <>
-    </>
+
+      {/* Modal de Edición */}
+      {showModal && (
+        <EditModal
+          initialData={videoToEdit}
+          onClose={handleClear}
+          onSave={handleSave}
+        />
+      )}
 
     </>
   );
