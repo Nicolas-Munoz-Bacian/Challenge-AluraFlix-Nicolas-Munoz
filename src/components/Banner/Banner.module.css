@@ -12,6 +12,24 @@
     background-color: black;
 }
 
+/* Estilos para el párrafo */
+.container p {
+    text-align: center; /* Centraliza el texto */
+    margin: 1em 0; /* Espaciado arriba y abajo */
+    color: black; /* Color del texto */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+  }
+  
+  /* Estilos para los banners */
+  .banner {
+    width: 100%; /* Asegura que el banner use todo el ancho */
+  }
+  
+  .banner img {
+    max-width: 100%; /* Asegura que la imagen del banner no exceda el ancho */
+    height: auto; /* Mantiene la proporción de la imagen */
+  }
+
 /* Responsividad */
 @media (max-width: 768px) {
     .capa {

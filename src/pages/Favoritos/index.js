@@ -12,9 +12,7 @@ function Favoritos() {
   return (
       <>
           <Banner img="favorite" color="#44d97d" />
-          <Titulo>
-              <h1></h1>
-          </Titulo>
+
           <section className={styles.container}>
               {favorito.map((fav) => (
                   <Card 

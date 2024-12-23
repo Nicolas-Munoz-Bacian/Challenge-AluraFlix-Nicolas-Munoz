@@ -4,6 +4,17 @@
     overflow-y: auto; /* Habilita desplazamiento vertical */
 }
 
+/* Estilos para los banners */
+.banner {
+    width: 100%; /* Asegura que el banner use todo el ancho */
+  }
+  
+  .banner img {
+    max-width: 100%; /* Asegura que la imagen del banner no exceda el ancho */
+    height: auto; /* Mantiene la proporción de la imagen */
+  }
+  
+
 /* ------------------------------ Responsividad ---------------------------------------*/
 
 /**BREAKPOINTS**/
