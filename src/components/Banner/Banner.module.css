@@ -22,11 +22,12 @@
 @media (min-width: 769px) and (max-width: 990px) {
     .capa {
         height: 35vh; /* Ajustar altura para tabletas */
+        width: 100px;
     }
 }
 
 @media (min-width: 991px) {
     .capa {
-        height: 70vh; /* Mantener altura para pantallas más grandes */
+        height: 80vh; /* Mantener altura para pantallas más grandes */
     }
 }

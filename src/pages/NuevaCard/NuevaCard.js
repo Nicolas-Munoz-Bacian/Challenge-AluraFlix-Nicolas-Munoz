@@ -3,7 +3,6 @@ import Card from '../../components/Card';
 import EditModal from '../../pages/ModalEditarCard/modal'; // Asegúrate de que el nombre de `EditModal` es correcto
 import { enviarProducto } from '../../pages/ConexionAPI/API';
 
-
 function NuevaCard({ initialVideos = [] }) {
     const [videos, setVideos] = useState(initialVideos);
     const [showModal, setShowModal] = useState(false);
@@ -64,6 +63,7 @@ function NuevaCard({ initialVideos = [] }) {
 
     return (
         <div>
+            <p>Aquí puedes crear nuevas cartas con URL de videos e imágenes de internet por cada sección y guardarlos en favoritos según sea tu gusto.</p> 
             <button onClick={handleNewVideo}>Agregar Nuevo Video</button>
             {showModal && (
                 <EditModal
