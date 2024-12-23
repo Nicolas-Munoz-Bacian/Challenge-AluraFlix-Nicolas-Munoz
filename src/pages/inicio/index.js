@@ -53,7 +53,7 @@ function Inicio() {
     <>
       <Banner src={home} img="home" color="#154580" />
       <p>Challenge React Alura Flix. <p></p>Aquí puedes ver los siguientes videos guardados y también puedes archivarlos en favoritos con 
-        darle click al corazón, y también en nuevo video, puedes crear nuevas cartas con nuevos videos 
+        darle click al corazón.<p></p>También en nuevo video, puedes crear nuevas cartas con nuevos videos 
         e imágenes de internet</p>
       {/* Sección Front End */}
       <Titulo>
