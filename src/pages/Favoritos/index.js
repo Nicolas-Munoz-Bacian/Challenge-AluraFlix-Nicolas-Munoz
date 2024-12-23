@@ -1,7 +1,6 @@
 import React from 'react';
 import Banner from "../../components/Banner";
 import styles from "../../pages/Favoritos/Favoritos.module.css";
-import Titulo from "../../components/Titulo";
 import Card from "../../components/Card";
 import { useFavoritosContext } from "../Context/Favoritos";
 

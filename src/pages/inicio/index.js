@@ -53,7 +53,9 @@ function Inicio() {
     <>
       <Banner src={home} img="home" color="#154580" />
       <p style={{ textAlign: 'center', margin: '1em 125px' }}>
-        Aquí puedes crear nuevas cartas con URLs de videos e imágenes de internet 
+        Challenge AluraFlix.<p></p>
+        Aquí puedes ver los videos a continuación y crear nuevas cartas con URLs 
+        de videos e imágenes de internet 
         por cada sección y guardarlos en favoritos según sea tu gusto.
       </p>
       {/* Sección Front End */}
