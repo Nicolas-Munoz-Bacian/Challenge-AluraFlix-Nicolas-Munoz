@@ -1,48 +1,48 @@
 import React, { useState } from 'react';
 import Card from '../../components/Card';
-import EditModal from '../../pages/ModalEditarCard/modal'; // Asegúrate de que el nombre de `EditModal` es correcto
+import EditModal from '../../pages/ModalEditarCard/modal';
 import { enviarProducto } from '../../pages/ConexionAPI/API';
 
-function NuevaCard({ initialVideos = [] }) {
+function NuevaCard({ initialVideos = [], onUpdateVideos }) {
     const [videos, setVideos] = useState(initialVideos);
     const [showModal, setShowModal] = useState(false);
     const [modalData, setModalData] = useState({ id: null, titulo: '', imagen: '', link: '', descripcion: '', categoria: 'Front-End' });
 
     const handleNewVideo = () => {
-        // Inicializa el modalData para la creación de un nuevo video
         setModalData({ id: null, titulo: '', imagen: '', link: '', descripcion: '', categoria: 'Front-End' });
         setShowModal(true);
     };
 
     const handleSave = async (videoData) => {
+        let updatedVideos;
+
         if (videoData.id) {
             // Editar video existente
-            const updatedVideos = videos.map(video =>
+            updatedVideos = videos.map(video => 
                 video.id === videoData.id ? videoData : video
             );
-            setVideos(updatedVideos); // Actualiza el estado
         } else {
             // Agregar un nuevo video
-            const updatedVideos = [...videos, videoData]; // Añade el nuevo video
-            setVideos(updatedVideos); // Actualiza el estado
+            videoData.id = new Date().getTime();
+            updatedVideos = [...videos, videoData];
         }
 
-        localStorage.setItem('videos', JSON.stringify(videos)); // Guarda en localStorage
-        setShowModal(false); // Cierra el modal
+        setVideos(updatedVideos);
+        localStorage.setItem('videos', JSON.stringify(updatedVideos));
+        setShowModal(false);
 
         try {
             const newVideoData = {
                 titulo: videoData.titulo,
-                imagen: videoData.imagen, // Asegúrate de que se utilice el campo imagen
+                imagen: videoData.imagen,
                 link: videoData.link,
                 descripcion: videoData.descripcion,
                 categoria: videoData.categoria,
             };
 
-            // Enviar el nuevo video a la API
             if (!videoData.id) {
                 const savedVideo = await enviarProducto(newVideoData);
-                setVideos(prevVideos => [...prevVideos, savedVideo]); // Añadir nuevo video guardado
+                setVideos(prevVideos => [...prevVideos, savedVideo]);
             }
         } catch (error) {
             console.error('Error al guardar el video:', error.message);
@@ -50,9 +50,15 @@ function NuevaCard({ initialVideos = [] }) {
         }
     };
 
+    // Función para eliminar un video por su ID
     const handleDelete = (videoId) => {
-        const updatedVideos = videos.filter(video => video.id !== videoId); // Elimina solo el video seleccionado
-        setVideos(updatedVideos); // Actualiza el estado
+        setVideos(prevVideos => prevVideos.filter(video => video.id !== videoId));
+    };
+
+    // Función para limpiar los datos del modal
+    const handleClear = () => {
+        setModalData({ id: null, titulo: '', imagen: '', link: '', descripcion: '', categoria: 'Front-End' });
+        setShowModal(false);
     };
 
     const categorias = {
@@ -67,7 +73,7 @@ function NuevaCard({ initialVideos = [] }) {
             {showModal && (
                 <EditModal
                     initialData={modalData}
-                    onClose={() => setShowModal(false)} 
+                    onClose={handleClear} // Usa manejar el "limpiar" al cerrar
                     onSave={handleSave} 
                 />
             )}
@@ -78,10 +84,10 @@ function NuevaCard({ initialVideos = [] }) {
                         <Card
                             key={video.id}
                             {...video}
-                            onDelete={() => handleDelete(video.id)}
+                            onDelete={() => handleDelete(video.id)} // Elimina solo el video seleccionado
                             onEdit={() => {
-                                setModalData(video);
-                                setShowModal(true);
+                                setModalData(video); // Prellenar el modal con los datos del video existente
+                                setShowModal(true); // Abre el modal para editar
                             }}
                         />
                     ))}

@@ -9,12 +9,14 @@ import innovacionYgestion from "../inicio/innovación y gestión.png";
 import videosData from "../../components/data/db.json"
 import { useState, useEffect } from "react";
 import EditModal from "../../pages/ModalEditarCard/modal";
+import NuevaCard from "../../pages/NuevaCard/NuevaCard";
 
 
 function Inicio() {
   const [videos, setVideos] = useState(videosData.videos); // Carga los videos desde db.json
   const [showModal, setShowModal] = useState(false);
   const [videoToEdit, setVideoToEdit] = useState(null);
+  const [showNuevaCard, setShowNuevaCard] = useState(false);
 
   useEffect(() => {
     fetch("https://my-json-server.typicode.com/DaniRiverol/alura-cinema-api/videos")
@@ -46,18 +48,38 @@ function Inicio() {
     setShowModal(false);
   };
 
+  const handleCloseNuevaCard = () => {
+    setShowNuevaCard(false);
+  };
+
+  const handleUpdateVideos = (newVideo) => {
+    setVideos((prevVideos) => [...prevVideos, newVideo]);
+    handleCloseNuevaCard(); // Cierra el formulario después de agregar
+  };
+
+  const handleNuevaCard = () => {
+    setShowNuevaCard(true); // Abre el modal para NuevaCard
+  };
+
   // Datos estáticos de videos
   const staticVideos = videosData.videos;
 
   return (
     <>
       <Banner src={home} img="home" color="#154580" />
+      
+      {/* Mostrar componente NuevaCard si showNuevaCard es true */}
+      {showNuevaCard && (
+        <NuevaCard initialVideos={videos} onUpdateVideos={handleUpdateVideos} />
+      )}
+           {/* Botón para agregar nueva tarjeta */}
       <p style={{ textAlign: 'center', margin: '1em 125px' }}>
         Challenge AluraFlix.<p></p>
         Aquí puedes ver los videos a continuación y crear nuevas cartas con URLs 
         de videos e imágenes de internet 
         por cada sección y guardarlos en favoritos según sea tu gusto.
       </p>
+
       {/* Sección Front End */}
       <Titulo>
         <img src={frontend} className="banner" alt="banner front end" />
@@ -67,8 +89,8 @@ function Inicio() {
           <Card
             {...video}
             key={video.id}
-            onEdit={() => handleEdit(video)} // Editar el video
-            onDelete={() => handleDelete(video.id)} // Eliminar solo el video seleccionado
+            onEdit={() => handleEdit(video)}
+            onDelete={() => handleDelete(video.id)}
             onSave={handleSave}
             onClear={handleClear}
           />
@@ -84,8 +106,8 @@ function Inicio() {
           <Card
             {...video}
             key={video.id}
-            onEdit={() => handleEdit(video)} // Editar el video
-            onDelete={() => handleDelete(video.id)} // Eliminar solo el video seleccionado
+            onEdit={() => handleEdit(video)}
+            onDelete={() => handleDelete(video.id)}
             onSave={handleSave}
             onClear={handleClear}
           />
@@ -101,8 +123,8 @@ function Inicio() {
           <Card
             {...video}
             key={video.id}
-            onEdit={() => handleEdit(video)} // Editar el video
-            onDelete={() => handleDelete(video.id)} // Eliminar solo el video seleccionado
+            onEdit={() => handleEdit(video)}
+            onDelete={() => handleDelete(video.id)}
             onSave={handleSave}
             onClear={handleClear}
           />
@@ -117,6 +139,7 @@ function Inicio() {
           onSave={handleSave}
         />
       )}
+
     </>
   );
 }
