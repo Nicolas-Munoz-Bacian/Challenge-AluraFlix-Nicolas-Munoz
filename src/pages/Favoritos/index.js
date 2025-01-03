@@ -4,9 +4,23 @@ import styles from "../../pages/Favoritos/Favoritos.module.css";
 import Card from "../../components/Card";
 import { useFavoritosContext } from "../Context/Favoritos";
 
-
 function Favoritos() {
   const { favorito, eliminarFavorito } = useFavoritosContext(); // Obtiene la lista de favoritos y la función para eliminar
+
+  // Función para redirigir a YouTube
+  const handlePlay = (video) => {
+      const formattedVideoUrl = formatYouTubeURL(video);
+      window.open(formattedVideoUrl, "_blank"); // Abre el video en una nueva pestaña
+  };
+
+  // Método para asegurar el formato correcto de la URL de YouTube
+  const formatYouTubeURL = (url) => {
+      if (url.startsWith('http')) {
+          return url; // Ya está bien formada
+      } else {
+          return `https://www.youtube.com/watch?v=${url.split('watch?v=')[1]}`; // Formación estándar para URLs de YouTube
+      }
+  };
 
   return (
       <>
@@ -18,7 +32,7 @@ function Favoritos() {
                       {...fav} 
                       key={fav.id} 
                       onDelete={() => eliminarFavorito(fav.id)} // Llama a eliminarFavorito en el click
-                      // Puedes agregar más props si es necesario
+                      onPlay={handlePlay} // Pasa la función onPlay a Card
                   />
               ))}
           </section>

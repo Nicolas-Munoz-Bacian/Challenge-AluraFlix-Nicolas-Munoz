@@ -113,10 +113,11 @@
 @media (min-width: 991px) { /* Ajuste del breakpoint máximo */
   .container{
       width:100%;
+      display: flex;
   }
 
   .products-container {
-      width: 80%;
+      width: 100%;
       display: grid;
       grid-template-columns: repeat(2, 1fr); /* Cambiar a dos columnas */
       gap: 20px; /* Espaciado entre columnas */
@@ -136,3 +137,25 @@
       align-items: center;
   }
 }
+
+  /* Estilos de Card */
+  .card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: auto;
+    max-width: 300px; /* Ancho máximo para las cards */
+    margin: 0 auto;
+  }
+  
+  .card img {
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho de la card */
+    height: auto;
+  }
+  
+  .card-container--value {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }

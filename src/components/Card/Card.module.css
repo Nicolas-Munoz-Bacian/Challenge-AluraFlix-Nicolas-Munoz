@@ -161,12 +161,18 @@
   @media (min-width: 991px) {
     .products-container {
         display: flex;
-        grid-template-columns: repeat(4, 1fr); /* Tres columnas en escritorio */
         gap: 20px; /* Espaciado entre columnas */
+        grid-template-columns: repeat(2,1fr);
+        width: calc(100% - 1rem);
     }
     .container {
         height: auto;
         display: flex;
         gap: 20px;
+        margin: 0.5rem;
+    }
+    .card {
+        flex: 1 1 45%; /* Dos cards por fila */
+        max-width: 45%; /* Limitación del ancho */
     }
   }

@@ -19,16 +19,6 @@
     color: black; /* Color del texto */
     width: 100%; /* Asegura que ocupe todo el ancho */
   }
-  
-  /* Estilos para los banners */
-  .banner {
-    width: 100%; /* Asegura que el banner use todo el ancho */
-  }
-  
-  .banner img {
-    max-width: 100%; /* Asegura que la imagen del banner no exceda el ancho */
-    height: auto; /* Mantiene la proporción de la imagen */
-  }
 
 /* Responsividad */
 @media (max-width: 768px) {
@@ -40,12 +30,14 @@
 @media (min-width: 769px) and (max-width: 990px) {
     .capa {
         height: 35vh; /* Ajustar altura para tabletas */
-        width: 100px;
+        width: 100%;
     }
 }
 
 @media (min-width: 991px) {
     .capa {
         height: 80vh; /* Mantener altura para pantallas más grandes */
+        width: 300%;
+        position: relative;
     }
 }

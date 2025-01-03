@@ -7,6 +7,7 @@
     border-width: 4px; /* Ancho del borde */
     border-style: solid; /* Tipo de borde */
     border-radius: 8px; /* Opcional: esquinas redondeadas */
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .img {
@@ -23,3 +24,7 @@
     padding: 5px;
     margin-left: 5px;
 }
+
+.banner {
+    width: 100%; 
+  }

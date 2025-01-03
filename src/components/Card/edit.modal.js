@@ -35,6 +35,11 @@ function EditModal({ initialData, onClose, onSave, onDelete }) {
         }
     };
 
+    
+  useEffect(() => {
+    setFormData(initialData);
+  }, [initialData]);
+
     const clearChanges = () => {
         setFormData(initialData); // Restablece los campos a su estado inicial
     };
@@ -99,5 +104,6 @@ function EditModal({ initialData, onClose, onSave, onDelete }) {
         </div>
     );
 }
+
 
 export default EditModal;
