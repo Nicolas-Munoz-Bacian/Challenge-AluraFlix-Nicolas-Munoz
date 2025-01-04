@@ -77,7 +77,7 @@ function Inicio() {
 
       {/* Sección Front End */}
       <Titulo>
-        <img src={frontend} className="banner" alt="banner front end" />
+        <img src={frontend} className="banner" alt="banner front end" style={{width: '50%'}}/>
       </Titulo>
       <section className={styles.container}>
         {videos.filter(video => video.categoria === "Front-End").map(video => (
@@ -94,7 +94,7 @@ function Inicio() {
 
       {/* Sección Back End */}
       <Titulo>
-        <img src={backend} className="banner" alt="banner back end" />
+        <img src={backend} className="banner" alt="banner back end" style={{width: '50%'}} />
       </Titulo>
       <section className={styles.container}>
         {videos.filter(video => video.categoria === "Back-End").map(video => (
@@ -111,7 +111,7 @@ function Inicio() {
 
       {/* Sección Innovación y Gestión */}
       <Titulo>
-        <img src={innovacionYgestion} className="banner" alt="banner innovación y gestion" />
+        <img src={innovacionYgestion} className="banner" alt="banner innovación y gestion" style={{width: '50%'}} />
       </Titulo>
       <section className={styles.container}>
         {videos.filter(video => video.categoria === "Innovación y Gestión").map(video => (
