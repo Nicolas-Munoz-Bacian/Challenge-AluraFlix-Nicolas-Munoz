@@ -4,3 +4,23 @@
     font-weight: 500;
     margin: 10px 0 10px 0;
 }
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .texto{
+        width: 100%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 990px) {
+    .texto {
+        width: 80%;
+    }
+}
+
+@media (min-width: 991px) {
+    .texto {
+        width: 80%;
+        position: relative;
+    }
+}

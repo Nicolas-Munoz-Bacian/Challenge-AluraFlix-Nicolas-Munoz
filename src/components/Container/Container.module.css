@@ -6,6 +6,17 @@
     gap: 1rem;
 }
 
-.img {
-    max-width: 100%;
+/* Responsividad */
+@media (max-width: 768px) {
+    .texto {
+        max-width: 80%; /* Asegura que la imagen del banner no exceda el ancho */
+      }
+}
+
+@media (min-width: 769px) and (max-width: 990px) {
+
+}
+
+@media (min-width: 991px) {
+
 }

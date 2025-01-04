@@ -9,11 +9,14 @@
 /* Estilos para los banners */
 .banner {
   width: 100%; /* Asegura que el banner use todo el ancho */
+  height: 50px; /* Define altura fija de 50px */
+  overflow: hidden; /* Asegura que el contenido que exceda se oculte */
 }
 
 .banner img {
-  max-width: 100%; /* Asegura que la imagen del banner no exceda el ancho */
-  height: auto; /* Mantiene la proporción de la imagen */
+  width: 100%; /* Asegura que la imagen del banner use todo el ancho */
+  height: 50px; /* Establece la altura de la imagen para que coincida con el banner */
+  object-fit: cover; /* Asegura que la imagen mantiene proporciones y se recorta si es necesario */
 }
 
 .button{
@@ -78,12 +81,12 @@
       align-items: center;
   }
 
-  .banner .backend .innovacionYgestion{
-    display: flex;
+  .banner{
+    width: 50%;
   }
 
   .container {
-    width: 80%;
+    width: 100%;
 }
 }
 
@@ -105,7 +108,7 @@
   }
 
   .container {
-    width: 80%;
+    width: 100%;
 }
 }
 
