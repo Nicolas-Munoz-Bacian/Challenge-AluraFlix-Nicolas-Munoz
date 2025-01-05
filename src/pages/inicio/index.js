@@ -182,15 +182,7 @@ function Inicio() {
           />
         ))}
       </section>
-      {videos.map((video) => (
-<Card
-key={video.id}
-{...video}
-onEdit={() => handleEdit(video)}
-onDelete={() => handleDelete(video.id)}
-onSave={handleSave}
-/>
-))}
+
       {showModal && (
         <EditModal
           initialData={videoToEdit}
