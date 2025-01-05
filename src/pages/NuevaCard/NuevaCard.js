@@ -36,7 +36,6 @@ function NuevaCard({ initialVideos = [], onUpdateVideos }) {
         const updatedVideos = videos.filter(video => video.id !== videoId); 
         setVideos(updatedVideos); 
         localStorage.setItem('videos', JSON.stringify(updatedVideos)); 
-        onUpdateVideos(updatedVideos); // Notify Inicio about the update
     };
 
     const handleClear = () => {

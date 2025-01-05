@@ -72,12 +72,12 @@ return (
                     src={capa} 
                     alt={titulo} 
                     className={styles.imagen}
+                    onSave={handleSave}
                     onClick={handlePlayVideo} // Llama a la función para reproducir el video
                 />
-                <h2>{titulo}</h2><button onClick={handlePlayVideo} className={styles.button}>
-            Reproducir
-        </button>
+                <h2>{titulo}</h2>
             </Link>
+
         </Link>
         <img 
             src={icon} 

@@ -12,7 +12,7 @@ import NuevaCard from "../../pages/NuevaCard/NuevaCard";
 import videosData from "../../components/data/db.json";
 
 function Inicio() {
-  const [videos, setVideos] = useState([]);
+  const [videos, setVideos] = useState([...videosData.videos]);
   const [showModal, setShowModal] = useState(false);
   const [videoToEdit, setVideoToEdit] = useState(null);
   const [showNuevaCardModal, setShowNuevaCard]= useState(false);
@@ -57,9 +57,13 @@ function Inicio() {
     const updatedVideos = [...videos, newVideo];
     localStorage.setItem('videos', JSON.stringify(updatedVideos));
     setVideos(updatedVideos); 
-    setShowNuevaCard(false); 
+    setShowNuevaCard(false);
+    if (videos.id === handleEdit.id) {
+      return handleEdit;
+    } 
   };
-
+  // Datos estáticos de videos
+  const staticVideos = videosData.videos;
 
   return (
     <>
@@ -75,43 +79,44 @@ function Inicio() {
         por cada sección y guardarlos en favoritos según prefieras.
       </p>
 
-      {/* Sección Front End */}
-      <Titulo>
-        <img src={frontend} className="banner" alt="banner front end" style={{width: '50%'}}/>
+{/* Sección Front End */}
+<Titulo>
+        <img src={frontend} className="banner" alt="banner front end" style={{width: '40%'}}/>
       </Titulo>
       <section className={styles.container}>
         {videos.filter(video => video.categoria === "Front-End").map(video => (
           <Card
             {...video}
             key={video.id}
-            onEdit={handleEdit}
-            onDelete={handleDelete}
+            onEdit={() => handleEdit(video)}
+            onDelete={() => handleDelete(video.id)}
             onSave={handleSave}
             onClear={handleClear}
           />
         ))}
+        
       </section>
-
       {/* Sección Back End */}
       <Titulo>
-        <img src={backend} className="banner" alt="banner back end" style={{width: '50%'}} />
+        <img src={backend} className="banner" alt="banner back end" style={{width: '40%'}} />
       </Titulo>
       <section className={styles.container}>
         {videos.filter(video => video.categoria === "Back-End").map(video => (
           <Card
             {...video}
             key={video.id}
-            onEdit={handleEdit}
-            onDelete={handleDelete}
+            onEdit={() => handleEdit(video)}
+            onDelete={() => handleDelete(video.id)}
             onSave={handleSave}
             onClear={handleClear}
           />
         ))}
       </section>
 
+
       {/* Sección Innovación y Gestión */}
       <Titulo>
-        <img src={innovacionYgestion} className="banner" alt="banner innovación y gestion" style={{width: '50%'}} />
+        <img src={innovacionYgestion} className="banner" alt="banner innovación y gestion" style={{width: '40%'}} />
       </Titulo>
       <section className={styles.container}>
         {videos.filter(video => video.categoria === "Innovación y Gestión").map(video => (
@@ -125,15 +130,67 @@ function Inicio() {
           />
         ))}
       </section>
+
+      {/* Sección Front End */}
+      <Titulo>
+        <img src={frontend} className="banner" alt="banner front end" style={{width: '50%'}} />
+      </Titulo>
+      <section className={styles.container}>
+        {staticVideos.filter(video => video.descripcion === "Front-End").map(video => (
+          <Card
+            {...video}
+            key={video.id}
+            onEdit={() => handleEdit(video)} // Editar el video
+            onDelete={() => handleDelete(video.id)} // Eliminar solo el video seleccionado
+            onSave={handleSave}
+            onClear={handleClear}
+          />
+        ))}
+        
+      </section>
+
+      {/* Sección Back End */}
+      <Titulo>
+        <img src={backend} className="banner" alt="banner back end" style={{width: '50%'}} />
+      </Titulo>
+      <section className={styles.container}>
+        {staticVideos.filter(video => video.descripcion === "Back-End").map(video => (
+          <Card
+            {...video}
+            key={video.id}
+            onEdit={() => handleEdit(video)} // Editar el video
+            onDelete={() => handleDelete(video.id)} // Eliminar solo el video seleccionado
+            onSave={handleSave}
+            onClear={handleClear}
+          />
+        ))}
+      </section>
+
+      {/* Sección Innovación y Gestión */}
+      <Titulo>
+        <img src={innovacionYgestion} className="banner" alt="banner innovación y gestion" style={{width: '50%'}} />
+      </Titulo>
+      <section className={styles.container}>
+        {staticVideos.filter(video => video.descripcion === "Innovación y Gestión").map(video => (
+          <Card
+            {...video}
+            key={video.id}
+            onEdit={() => handleEdit(video)} // Editar el video
+            onDelete={() => handleDelete(video.id)} // Eliminar solo el video seleccionado
+            onSave={handleSave}
+            onClear={handleClear}
+          />
+        ))}
+      </section>
       {videos.map((video) => (
-        <Card
-          key={video.id}
-          {...video}
-          onEdit={() => handleEdit(video)}
-          onDelete={() => handleDelete(video.id)}
-          onSave={handleSave}
-        />
-      ))}
+<Card
+key={video.id}
+{...video}
+onEdit={() => handleEdit(video)}
+onDelete={() => handleDelete(video.id)}
+onSave={handleSave}
+/>
+))}
       {showModal && (
         <EditModal
           initialData={videoToEdit}
